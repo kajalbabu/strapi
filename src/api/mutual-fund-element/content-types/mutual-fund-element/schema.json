@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mutual_fund_elements",
+  "info": {
+    "singularName": "mutual-fund-element",
+    "pluralName": "mutual-fund-elements",
+    "displayName": "mutual-fund-element",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "field_3_pm_nav_title": {
+      "type": "string"
+    },
+    "field_3pm_nav_cta_text": {
+      "type": "string"
+    },
+    "field_3pm_nav_start_time": {
+      "type": "datetime"
+    },
+    "field_3pm_nav_end_time": {
+      "type": "datetime"
+    },
+    "field_3_pm_nav_url_page": {
+      "type": "string"
+    },
+    "field_3_pm_nav_page_on_off": {
+      "type": "boolean"
+    },
+    "field_3_pm_nav_dropdown": {
+      "type": "string"
+    },
+    "field_3pm_nav_scheme_code": {
+      "type": "string"
+    }
+  }
+}
