@@ -10,18 +10,25 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Debugging SonarQube connectivity
-      run: |
-        echo "Testing SonarQube server connectivity..."
-        curl -v ${{ secrets.SONAR_HOST_URL }} || exit 1
-        echo "SonarQube server URL: ${{ secrets.SONAR_HOST_URL }}"
-        echo "SonarQube token: ${{ secrets.SONAR_TOKEN }}"
 
     - name: Set up JDK 17
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
         java-version: '17'
+
+    - name: Print SonarQube server URL
+      run: echo "SonarQube server URL: ${{ secrets.SONAR_HOST_URL }}"
+
+    - name: Test connectivity to SonarQube server
+      run: |
+        echo "Testing connectivity to SonarQube server..."
+        curl -v ${{ secrets.SONAR_HOST_URL }} || exit 1
+
+    - name: Test DNS resolution
+      run: |
+        echo "Testing DNS resolution..."
+        nslookup $(echo ${{ secrets.SONAR_HOST_URL }} | awk -F[/:] '{print $4}') || exit 1
 
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
